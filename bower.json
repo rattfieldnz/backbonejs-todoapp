@@ -1,0 +1,28 @@
+{
+  "name": "angular",
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "backbone-localstorage": "~0.3.2"
+  }
+}
