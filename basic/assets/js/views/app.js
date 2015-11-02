@@ -14,6 +14,12 @@ app.AppView = Backbone.View.extend({
     // The template to display stats information.
     statsTemplate: _.template($('#stats-template').html()),
 
+    events: {
+        'keypress #new-todo': 'createOnEnter',
+        'click .clear-completed': 'clearCompleted',
+        'click .toggle-all': 'toggleAllComplete'
+    },
+
     // When view is initialised, bind related events to the Todos' collection.
     initialize: function(){
         this.allCheckbox = this.$('#toggle-all')[0];
@@ -64,11 +70,10 @@ app.AppView = Backbone.View.extend({
     // while cursor is in main input field. Todo item is then
     // persisted into local storage.
     createOnEnter: function(event){
-        if(event.which !== ENTER_KEY || !this.$input.val().trim()){
-            return;
+        if(event.which === ENTER_KEY && this.$input.val().trim()){
+            app.Todos.create(this.newAttributes());
+            this.$input.val('');
         }
-        app.Todo.create(this.newAttributes());
-        this.$input.val('');
     },
 
     // Clear and destroy all completed todo items.
